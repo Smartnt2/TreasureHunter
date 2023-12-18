@@ -18,7 +18,7 @@ public class Hunter {
      * @param startingGold The gold the hunter starts with.
      */
     public Hunter(String hunterName, int startingGold) {
-        this.hunterName = hunterName;
+        this.hunterName = Colors.PURPLE + hunterName;
         kit = new String[5]; // only 5 possible items can be stored in kit
         gold = startingGold;
     }

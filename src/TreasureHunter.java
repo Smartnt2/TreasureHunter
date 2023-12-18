@@ -42,11 +42,11 @@ public class TreasureHunter {
     private void welcomePlayer() {
         System.out.println("Welcome to TREASURE HUNTER!");
         System.out.println("Going hunting for the big treasure, eh?");
-        System.out.print("What's your name, Hunter? ");
+        System.out.print("What's your name, " + Colors.PURPLE + "Hunter? " + Colors.RESET);
         String name = SCANNER.nextLine().toLowerCase();
 
         // set hunter instance variable
-        hunter = new Hunter(name, 10);
+        hunter = new Hunter(Colors.PURPLE + name + Colors.RESET, 10);
 
         System.out.print("Hard mode? (y/n): ");
         String hard = SCANNER.nextLine().toLowerCase();

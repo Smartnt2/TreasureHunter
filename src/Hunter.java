@@ -4,7 +4,6 @@
  * This code has been adapted from Ivan Turner's original program -- thank you Mr. Turner!
  */
 
-//test :3
 
 public class Hunter {
     //instance variables

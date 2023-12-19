@@ -46,7 +46,7 @@ public class TreasureHunter {
         String name = SCANNER.nextLine().toLowerCase();
 
         // set hunter instance variable
-        hunter = new Hunter(Colors.PURPLE + name + Colors.RESET, 10);
+        hunter = new Hunter(Colors.PURPLE + name + Colors.RESET, 1);
 
         System.out.print("Hard mode? (y/n): ");
         String hard = SCANNER.nextLine().toLowerCase();
@@ -97,6 +97,9 @@ public class TreasureHunter {
         while (!choice.equals("x")) {
             System.out.println();
             System.out.println(currentTown.getLatestNews());
+            if(hunter.getGold() < 0) {
+                break;
+            }
             System.out.println("***");
             System.out.println(hunter);
             System.out.println(currentTown);

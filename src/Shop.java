@@ -13,6 +13,7 @@ public class Shop {
     private static final int MACHETE_COST = 6;
     private static final int HORSE_COST = 12;
     private static final int BOAT_COST = 20;
+    private static final int SWORD_COST = 0;
 
     private static final int SHOVEL_COST = 10;
 
@@ -51,13 +52,17 @@ public class Shop {
             System.out.print("What're you lookin' to buy? ");
             String item = SCANNER.nextLine().toLowerCase();
             int cost = checkMarketPrice(item, true);
-            if (cost == 0) {
+            if (cost == -1 || (item.equals("sword") && !hunter.getIsSamurai())) {
                 System.out.println("We ain't got none of those.");
             } else {
-                System.out.print("It'll cost you " + Colors.YELLOW + cost + Colors.RESET + " gold. Buy it (y/n)? ");
-                String option = SCANNER.nextLine().toLowerCase();
+                if(!hunter.getIsSamurai()) {
+                    System.out.print("It'll cost you " + Colors.YELLOW + cost + Colors.RESET + " gold. Buy it (y/n)? ");
+                    String option = SCANNER.nextLine().toLowerCase();
 
-                if (option.equals("y")) {
+                    if (option.equals("y")) {
+                        buyItem(item);
+                    }
+                } else {
                     buyItem(item);
                 }
             }
@@ -66,7 +71,7 @@ public class Shop {
             System.out.print("You currently have the following items: " + customer.getInventory());
             String item = SCANNER.nextLine().toLowerCase();
             int cost = checkMarketPrice(item, false);
-            if (cost == 0) {
+            if (cost == -1) {
                 System.out.println("We don't want none of those.");
             } else {
                 System.out.print("It'll get you " + Colors.YELLOW + cost + Colors.RESET + " gold. Sell it (y/n)? ");
@@ -94,6 +99,9 @@ public class Shop {
         str += "Shovel: " + Colors.YELLOW + SHOVEL_COST  + Colors.RESET + " gold\n";
         str += "Boots: " + Colors.YELLOW + BOOTS_COST  + Colors.RESET + " gold\n";
 
+        if(customer.getIsSamurai()) {
+            str += "Sword: " + Colors.YELLOW + SWORD_COST + Colors.RESET + " gold\n";
+        }
 
         return str;
     }
@@ -104,6 +112,10 @@ public class Shop {
      * @param item The item being bought.
      */
     public void buyItem(String item) {
+        if(customer.hasItemInKit("sword")) {
+            System.out.println("the sword intimidates the shopkeeper and he gives you the item freely");
+            System.out.println("You got a " + Colors.PURPLE  + item + Colors.RESET);
+        }
         int costOfItem = checkMarketPrice(item, true);
         if (customer.buyItem(item, costOfItem)) {
             System.out.println("Ye' got yerself a " + Colors.PURPLE  + item + Colors.RESET + ". Come again soon.");
@@ -163,9 +175,10 @@ public class Shop {
             return SHOVEL_COST;
         } else if (item.equals("boots")){
             return BOOTS_COST;
-        }
-        else {
-            return 0;
+        } else if (item.equals("sword")) {
+            return SWORD_COST;
+        } else {
+            return -1;
         }
     }
 

@@ -11,6 +11,7 @@ public class Hunter {
     private String[] kit;
     private String[] collectedTreasure;
     private int gold;
+    private boolean isSamurai;
 
     String[] allGameItems = {"water", "rope", "boat", "horse", "machete", "shovel", "boots"};
 
@@ -21,10 +22,15 @@ public class Hunter {
      * @param hunterName The hunter's name.
      * @param startingGold The gold the hunter starts with.
      */
-    public Hunter(String hunterName, int startingGold) {
+    public Hunter(String hunterName, int startingGold, boolean isSamurai) {
 
         this.hunterName = Colors.PURPLE + hunterName;
-        kit = new String[7]; // only 7 possible items can be stored in kit
+        this.isSamurai = isSamurai;
+        if(isSamurai) {
+            kit = new String[8];
+        } else {
+            kit = new String[7];
+        }
         collectedTreasure = new String[3];
         gold = startingGold;
         if (startingGold == 100){
@@ -56,7 +62,10 @@ public class Hunter {
      * @return true if the item is successfully bought.
      */
     public boolean buyItem(String item, int costOfItem) {
-        if (costOfItem == 0 || gold < costOfItem || hasItemInKit(item)) {
+        if(hasItemInKit("sword")) {
+            return true;
+        }
+        if (costOfItem == -1 || gold < costOfItem || hasItemInKit(item)) {
             return false;
         }
 
@@ -179,8 +188,8 @@ public class Hunter {
         return gold;
     }
 
-    public String[] getCollectedTreasure() {
-        return collectedTreasure;
+    public boolean getIsSamurai() {
+        return isSamurai;
     }
 
     /**

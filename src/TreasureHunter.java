@@ -17,6 +17,7 @@ public class TreasureHunter {
     private Hunter hunter;
     private boolean hardMode;
     private boolean easyMode;
+    private boolean samuraiMode;
 
     /**
      * Constructs the Treasure Hunter game.
@@ -27,6 +28,7 @@ public class TreasureHunter {
         hunter = null;
         hardMode = false;
         easyMode = false;
+        samuraiMode = false;
     }
 
     /**
@@ -52,18 +54,22 @@ public class TreasureHunter {
         System.out.print("Easy, normal, or hard mode? (e/n/h): ");
         String difficulty = SCANNER.nextLine().toLowerCase();
         if (difficulty.equals("test")) {
-            hunter = new Hunter(Colors.PURPLE + name + Colors.RESET, 100);
+            hunter = new Hunter(Colors.PURPLE + name + Colors.RESET, 100, false);
         }
         else if(difficulty.equals("e")) {
             easyMode = true;
-            hunter = new Hunter(Colors.PURPLE + name + Colors.RESET, 20);
+            hunter = new Hunter(Colors.PURPLE + name + Colors.RESET, 20, false);
         }
         else if (difficulty.equals("h")) {
             hardMode = true;
-            hunter = new Hunter(Colors.PURPLE + name + Colors.RESET, 10);
+            hunter = new Hunter(Colors.PURPLE + name + Colors.RESET, 10, false);
+        }
+        else if (difficulty.equals("s")) {
+            samuraiMode = true;
+            hunter = new Hunter(Colors.RED + name + Colors.RESET, 10, true);
         }
         else {
-            hunter = new Hunter(Colors.PURPLE + name + Colors.RESET, 10);
+            hunter = new Hunter(Colors.PURPLE + name + Colors.RESET, 10, false);
         }
     }
 
@@ -83,6 +89,9 @@ public class TreasureHunter {
         if(easyMode) {
             markdown = 1;
             toughness = .25;
+        }
+        if(samuraiMode) {
+            toughness = .8;
         }
 
         // note that we don't need to access the Shop object

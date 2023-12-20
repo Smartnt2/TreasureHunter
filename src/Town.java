@@ -13,6 +13,7 @@ public class Town {
     private boolean toughTown;
     private boolean treasureFound;
     private String treasure;
+    private double toughness;
 
 
 
@@ -36,6 +37,7 @@ public class Town {
         toughTown = (Math.random() < toughness);
         assignTreasure();
         treasureFound = false;
+        this.toughness = toughness;
     }
 
     public String getLatestNews() {
@@ -68,7 +70,7 @@ public class Town {
         if (canLeaveTown) {
             String item = terrain.getNeededItem();
             printMessage = "You used your " + item + " to cross the " + terrain.getTerrainName() + ".";
-            if (checkItemBreak()) {
+            if (checkItemBreak() && !(toughness == .25)) {
                 hunter.removeItemFromKit(item);
                 printMessage += "\nUnfortunately, you lost your " + item;
             }

@@ -15,6 +15,8 @@ public class Town {
     private String treasure;
     private double toughness;
 
+
+
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
      *
@@ -147,6 +149,28 @@ public class Town {
             treasureFound = true;
         } else {
             printMessage += "\nYou have already searched this town";
+        }
+    }
+
+    public void digForGold(){
+        if (hunter.hasItemInKit("shovel")) {
+            int goldFound = 0;
+            System.out.println("You enter the caves in search of gold");
+            if (Math.random() < 0.25) {
+                goldFound = (int) (4 * (Math.random()));
+                if (goldFound != 0) {
+                    System.out.println("You struck gold!");
+                    hunter.changeGold(goldFound);
+                } else {
+                    System.out.println("You didn't find any gold");
+                }
+            } else {
+                System.out.println("You decided you were too tired to dig");
+            }
+            System.out.println("You leave the cave with " + goldFound + " gold");
+        }
+        else{
+            System.out.println("You do not have a shovel, you need one to dig for gold");
         }
     }
 

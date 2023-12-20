@@ -13,7 +13,7 @@ public class Hunter {
     private int gold;
     private boolean isSamurai;
 
-    String[] allGameItems = {"water", "rope", "boat", "horse", "machete"};
+    String[] allGameItems = {"water", "rope", "boat", "horse", "machete", "shovel"};
 
 
     /**

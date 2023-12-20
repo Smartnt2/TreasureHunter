@@ -106,6 +106,9 @@ public class TreasureHunter {
             if(hunter.getGold() < 0) {
                 break;
             }
+            if(hunter.treasureIsFull()) {
+                break;
+            }
             System.out.println("***");
             System.out.println(hunter);
             System.out.println(currentTown);

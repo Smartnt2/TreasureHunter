@@ -126,6 +126,9 @@ public class Town {
                 printMessage += "\nYou found a " + Colors.PURPLE + treasure + Colors.RESET + "!";
                 if(!treasure.equals("dust")) {
                     hunter.addTreasure(treasure);
+                    if(hunter.treasureIsFull()) {
+                        printMessage += "\nYou found the last of the 3 " + Colors.PURPLE + "treasures" + Colors.RESET +", you win!";
+                    }
                 }
             } else {
                 printMessage += "\nYou have already found a " + Colors.PURPLE + treasure + Colors.RESET + ", you don't need another one";

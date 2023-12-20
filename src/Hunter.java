@@ -179,6 +179,10 @@ public class Hunter {
         return gold;
     }
 
+    public String[] getCollectedTreasure() {
+        return collectedTreasure;
+    }
+
     /**
      * @return A string representation of the hunter.
      */
@@ -228,9 +232,18 @@ public class Hunter {
         return true;
     }
 
-    private boolean treasureIsEmpty() {
+    public boolean treasureIsEmpty() {
         for(String treasure : collectedTreasure) {
             if(treasure != null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean treasureIsFull() {
+        for(String treasure : collectedTreasure) {
+            if(treasure == null) {
                 return false;
             }
         }

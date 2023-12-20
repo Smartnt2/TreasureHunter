@@ -189,7 +189,7 @@ public class Town {
             return new Terrain("Jungle", "Machete");
         }
         else{
-            return new Terrain("Volcano", "Boat");
+            return new Terrain("Marsh", "Boots");
         }
     }
 

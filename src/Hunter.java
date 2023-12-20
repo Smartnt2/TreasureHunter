@@ -12,7 +12,7 @@ public class Hunter {
     private String[] collectedTreasure;
     private int gold;
 
-    String[] allGameItems = {"water", "rope", "boat", "horse", "machete", "shovel"};
+    String[] allGameItems = {"water", "rope", "boat", "horse", "machete", "shovel", "boots"};
 
 
     /**
@@ -24,7 +24,7 @@ public class Hunter {
     public Hunter(String hunterName, int startingGold) {
 
         this.hunterName = Colors.PURPLE + hunterName;
-        kit = new String[6]; // only 5 possible items can be stored in kit
+        kit = new String[7]; // only 7 possible items can be stored in kit
         collectedTreasure = new String[3];
         gold = startingGold;
         if (startingGold == 100){

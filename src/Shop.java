@@ -117,6 +117,7 @@ public class Shop {
         } else {
             System.out.println("Stop stringin' me along!");
         }
+
     }
 
     /**

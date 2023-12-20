@@ -13,6 +13,7 @@ public class Town {
     private boolean toughTown;
     private boolean treasureFound;
     private String treasure;
+    private double toughness;
 
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
@@ -34,6 +35,7 @@ public class Town {
         toughTown = (Math.random() < toughness);
         assignTreasure();
         treasureFound = false;
+        this.toughness = toughness;
     }
 
     public String getLatestNews() {
@@ -66,7 +68,7 @@ public class Town {
         if (canLeaveTown) {
             String item = terrain.getNeededItem();
             printMessage = "You used your " + item + " to cross the " + terrain.getTerrainName() + ".";
-            if (checkItemBreak()) {
+            if (checkItemBreak() && !(toughness == .25)) {
                 hunter.removeItemFromKit(item);
                 printMessage += "\nUnfortunately, your " + item + " broke.";
             }

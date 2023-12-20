@@ -4,4 +4,3 @@ public class TreasureHunterRunner {
         game.play();
     }
 }
-//

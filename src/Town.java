@@ -88,7 +88,7 @@ public class Town {
             return true;
         }
 
-        window.addTextToWindow("You can't leave town, ", Color.BLACK)
+        window.addTextToWindow("You can't leave town, ", Color.BLACK);
         window.addTextToWindow(hunter.getHunterName(), Color.PINK);
         window.addTextToWindow(". You don't have a ", Color.BLACK);
         window.addTextToWindow(terrain.getNeededItem() + ".", Color.PINK);
